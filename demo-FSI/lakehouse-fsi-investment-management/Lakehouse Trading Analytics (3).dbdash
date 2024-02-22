@@ -1,0 +1,1302 @@
+{
+  "queries": [
+    {
+      "id": "0c65576b-5629-4aae-8117-5bcbda330d08",
+      "name": "Slippage (1)",
+      "description": null,
+      "query": "select * from (SELECT ticker, avg(pi) slippage from dbdemos.fsi_capm_data.silver_trade_slippage group by ticker\norder by  ticker \nlimit 20) foo \norder by slippage desc\n",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068639",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "hedgefunds",
+        "catalog": "ludepa"
+      },
+      "visualizations": [
+        {
+          "id": "43812659-015c-4cb2-b25f-70ab91b24b0e",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "ee67d708-8dfa-43a8-8695-ef88f114e76b",
+          "type": "CHART",
+          "name": "By Company",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "column",
+            "sortX": false,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              },
+              "title": {
+                "text": "Ticker symbol"
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_d060330188809": {
+                "name": "agg_slippage",
+                "yAxis": 0,
+                "type": "column"
+              },
+              "column_d060330189025": {
+                "yAxis": 0,
+                "type": "column",
+                "name": "Average slippage"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": false,
+            "numBins": 10,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "ticker",
+                "id": "column_b536774613546"
+              },
+              "y": [
+                {
+                  "id": "column_d060330189025",
+                  "column": "slippage",
+                  "transform": "AVG"
+                }
+              ]
+            },
+            "isAggregationOn": true,
+            "condensed": true,
+            "withRowNumber": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "ticker"
+              },
+              {
+                "function": "AVG",
+                "args": [
+                  {
+                    "column": "slippage"
+                  }
+                ],
+                "alias": "column_d060330189025"
+              }
+            ],
+            "groups": [
+              {
+                "column": "ticker"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "f767b598-6f97-45f8-a9e8-cdc2c86672b3",
+      "name": "Spread Cost (1)",
+      "description": null,
+      "query": "select avg(price) price, date_trunc('MINUTE', from_unixtime(datetime)) trade_minute, avg( (price - ((asof_ex_time_ask_price - asof_ex_time_bid_price)/2)) - (price - ((realized_ask_price - realized_bid_price)/2))) price_impact \nfrom dbdemos.fsi_capm_data.silver_trade_slippage \nwhere date = '2019-07-08' \nand from_unixtime(datetime) between '2019-07-08 12:30:00' and '2019-07-08 16:00:00' \ngroup by date_trunc('MINUTE', from_unixtime(datetime))\norder by date_trunc('MINUTE', from_unixtime(datetime))",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068637",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "bronze",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "69678baa-b0ca-4763-9b58-eb71b03facb7",
+          "type": "CHART",
+          "name": "Price Impact",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "line",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              },
+              "title": {
+                "text": "Timestamp"
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": null
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true,
+                "title": {
+                  "text": "Price Impact"
+                }
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_d060330122249": {
+                "yAxis": 0,
+                "type": "line",
+                "name": "Realized Spread",
+                "color": "#17BF51"
+              },
+              "column_d060330122251": {
+                "yAxis": 0,
+                "type": "line",
+                "name": "Price"
+              },
+              "column_d060330122253": {
+                "yAxis": 0,
+                "type": "line",
+                "name": "Latest offer"
+              },
+              "column_c85a1ef016878": {
+                "yAxis": 0,
+                "type": "line"
+              },
+              "column_c85a1ef027386": {
+                "yAxis": 0,
+                "type": "line",
+                "color": "#FB8D3D",
+                "name": "Market Price Impact"
+              },
+              "column_c85a1ef032842": {
+                "yAxis": 0,
+                "type": "line"
+              },
+              "column_c85a1ef035477": {
+                "yAxis": 1,
+                "type": "line",
+                "name": "Trade Price",
+                "color": "#B554FF"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "trade_minute",
+                "transform": "MINUTE_LEVEL",
+                "id": "column_c85a1ef014012"
+              },
+              "y": [
+                {
+                  "id": "column_c85a1ef027386",
+                  "column": "price_impact",
+                  "transform": "MEDIAN"
+                },
+                {
+                  "id": "column_c85a1ef035477",
+                  "column": "price",
+                  "transform": "MEDIAN"
+                }
+              ]
+            },
+            "isAggregationOn": true,
+            "condensed": true,
+            "withRowNumber": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "function": "DATE_TRUNC",
+                "args": [
+                  {
+                    "column": "trade_minute"
+                  },
+                  {
+                    "string": "MINUTE"
+                  }
+                ],
+                "alias": "column_c85a1ef014012"
+              },
+              {
+                "function": "PERCENTILE",
+                "args": [
+                  {
+                    "column": "price_impact"
+                  },
+                  {
+                    "number": 0.5
+                  }
+                ],
+                "alias": "column_c85a1ef027386"
+              },
+              {
+                "function": "PERCENTILE",
+                "args": [
+                  {
+                    "column": "price"
+                  },
+                  {
+                    "number": 0.5
+                  }
+                ],
+                "alias": "column_c85a1ef035477"
+              }
+            ],
+            "groups": [
+              {
+                "column": "column_c85a1ef014012"
+              }
+            ]
+          }
+        },
+        {
+          "id": "7bce8d35-f67f-47dc-98e1-5635d6d8b22a",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "3243e5e9-eea9-440d-95eb-9a354fad6d4f",
+      "name": "VWAP",
+      "description": null,
+      "query": "select date_trunc(\"MINUTE\", event_ts) ts, ticker, sum(price*size)/sum(size) vwap from dbdemos.fsi_capm_data.silver_trade_slippage\nwhere ticker = {{ ticker}} \nand date = '2019-07-12'\n group by date_trunc(\"MINUTE\", event_ts), ticker\n",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068643",
+        "visualization_control_order": [
+          "ticker"
+        ],
+        "parameters": [
+          {
+            "title": "ticker",
+            "name": "ticker",
+            "type": "text",
+            "value": "MSFT"
+          }
+        ],
+        "schema": "silver",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "2e726bea-7f88-4040-a33c-ef351f7add28",
+          "type": "CHART",
+          "name": "Line 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "line",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              },
+              "title": {
+                "text": "Trade Time Bucket"
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "VWAP by minute"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": false,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_77f8207b41470": {
+                "name": "vwap",
+                "yAxis": 0,
+                "type": "line"
+              },
+              "MSFT": {
+                "color": "#604FE9",
+                "type": "line"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "ts",
+                "id": "column_77f8207b41468"
+              },
+              "series": {
+                "column": "ticker",
+                "id": "column_77f8207b41469"
+              },
+              "y": [
+                {
+                  "column": "vwap",
+                  "transform": "MEDIAN",
+                  "id": "column_77f8207b41470"
+                }
+              ]
+            },
+            "isAggregationOn": true,
+            "condensed": true,
+            "withRowNumber": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "ts"
+              },
+              {
+                "column": "ticker"
+              },
+              {
+                "function": "PERCENTILE",
+                "args": [
+                  {
+                    "column": "vwap"
+                  },
+                  {
+                    "number": 0.5
+                  }
+                ],
+                "alias": "column_77f8207b41470"
+              }
+            ],
+            "groups": [
+              {
+                "column": "ts"
+              },
+              {
+                "column": "ticker"
+              }
+            ]
+          }
+        },
+        {
+          "id": "f4ec4966-6550-4ef6-88c4-b57d09575f41",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "001f2d5f-a736-4fe7-8a8e-9f7b611ba171",
+      "name": "Trade Count (1)",
+      "description": null,
+      "query": "select avg(total_trades) avg_total_trades \nfrom (select DATE, count(1) total_trades from dbdemos.fsi_capm_data.bronze_tick_trades group by DATE) Foo",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068640",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "bronze",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "57dac60f-66ea-4a3d-b368-46849c6f7368",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "c62064a3-e7df-43c1-8ffd-e542166ac1d7",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "Average Trade count",
+            "counterColName": "avg_total_trades",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 0,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000",
+            "condensed": true,
+            "withRowNumber": true
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "12ba4b23-c0fb-470a-9557-8645eb0c3e36",
+      "name": "Price Improvement Per MPID Routed To (1)",
+      "description": null,
+      "query": "select mpid, avg( price - ((asof_ex_time_ASK_PRICE - asof_ex_time_bid_price)/2)) avg_price_improvement, count(1) trade_ct from dbdemos.fsi_capm_data.silver_trade_slippage group by mpid \norder by trade_ct desc limit 20",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068641",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "bronze",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "1823b64f-bfe8-4bfa-80fc-71645ca3fe29",
+          "type": "CHART",
+          "name": "Price Improvement",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "bubble",
+            "sortX": false,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "mpid": {
+                "yAxis": 0,
+                "type": "bubble"
+              },
+              "column_afc38f8e25690": {
+                "yAxis": 0,
+                "type": "bubble",
+                "color": "#356AFF"
+              },
+              "avg_price_improvement": {
+                "yAxis": 0,
+                "type": "bubble",
+                "color": "#356AFF"
+              },
+              "column_afc38f8e22881": {
+                "yAxis": 0,
+                "type": "bubble"
+              },
+              "trade_ct": {
+                "yAxis": 1,
+                "type": "bubble",
+                "color": "#E92828"
+              },
+              "column_afc38f8e25831": {
+                "yAxis": 0,
+                "type": "bubble",
+                "color": "#356AFF"
+              },
+              "column_afc38f8e25972": {
+                "yAxis": 1,
+                "type": "bubble",
+                "color": "#E92828"
+              },
+              "column_afc38f8e26043": {
+                "yAxis": 0,
+                "type": "bubble"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "trade_ct",
+                "id": "column_afc38f8e25973"
+              },
+              "y": [
+                {
+                  "column": "mpid",
+                  "id": "column_afc38f8e26043"
+                }
+              ],
+              "size": {
+                "column": "avg_price_improvement",
+                "id": "column_afc38f8e26113"
+              }
+            },
+            "condensed": true,
+            "withRowNumber": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "trade_ct"
+              },
+              {
+                "column": "mpid"
+              },
+              {
+                "column": "avg_price_improvement"
+              }
+            ]
+          }
+        },
+        {
+          "id": "aeeb810e-1206-4db7-a54a-4c8cbeb4d58d",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "itemsPerPage": 25,
+            "condensed": true,
+            "withRowNumber": false,
+            "columns": [
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "mpid",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 100000,
+                "title": "mpid",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": true,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "fill_rate",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 100001,
+                "title": "fill_rate",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": true,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              }
+            ]
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "15b18c39-8a32-4f1b-9784-8b5fbb3c6438",
+      "name": "Historical Date Range (1)",
+      "description": null,
+      "query": "select concat(min(date), ' -> ', max(date)) date_range \nfrom dbdemos.fsi_capm_data.bronze_tick_trades",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068636",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "default",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "a944859e-39f2-4a3f-9114-19816006f85c",
+          "type": "COUNTER",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "counterLabel": "Time Range",
+            "counterColName": "date_range",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 0,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000",
+            "formatTargetValue": false
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "e835389e-bc50-42c4-b2fc-194b5f19993a",
+      "name": "Securities Count",
+      "description": null,
+      "query": "select count(distinct ticker) securities_count from dbdemos.fsi_capm_data.silver_trade_slippage",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068642",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "silver",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "71329abc-7614-4533-bf1b-9d9aa1e38b14",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "Number of Traded Securities",
+            "counterColName": "securities_count",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 0,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000"
+          },
+          "query_plan": null
+        },
+        {
+          "id": "7263bae6-cfe0-4588-ad02-c691035489cb",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "9d117aad-be51-42b6-a034-9fbea65106f0",
+      "name": "Corporation Actions (1)",
+      "description": null,
+      "query": "select * from dbdemos.fsi_capm_data.corporate_actions\n\norder by effective_dt",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532068638",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "creditdecisioning_fielddemo",
+        "catalog": "hive_metastore"
+      },
+      "visualizations": [
+        {
+          "id": "95925ba5-c4ab-4ded-b8b0-674e3d06f010",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "itemsPerPage": 25,
+            "condensed": true,
+            "withRowNumber": false,
+            "columns": [
+              {
+                "dateTimeFormat": "YYYY-MM-DD",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "eff_date",
+                "type": "date",
+                "displayAs": "datetime",
+                "visible": true,
+                "order": 100000,
+                "title": "eff_date",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "identifier",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 100001,
+                "title": "identifier",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "name",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 100002,
+                "title": "name",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "key",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 100003,
+                "title": "key",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "value",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 100004,
+                "title": "value",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "dateTimeFormat": "YYYY-MM-DD",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "effective_dt",
+                "type": "date",
+                "displayAs": "datetime",
+                "visible": true,
+                "order": 100005,
+                "title": "effective_dt",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              }
+            ],
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    }
+  ],
+  "dashboard": {
+    "id": "f5429915-d529-445b-b945-fc86f86bb77b",
+    "name": "Lakehouse Trading Analytics_RMv2",
+    "widgets": [
+      {
+        "id": "1094ec41-3d91-47c1-8501-cb9d83baf150",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 2,
+            "row": 3
+          },
+          "description": "",
+          "title": "Trade Frequency",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "c62064a3-e7df-43c1-8ffd-e542166ac1d7"
+      },
+      {
+        "id": "29f37148-088d-47ee-a9c5-488aba0c7427",
+        "width": 1,
+        "options": {
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 0
+          },
+          "parameterMappings": {}
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "# Trading Logistics"
+      },
+      {
+        "id": "4bd8edfd-bb1d-4ff7-9c3a-c0e774021cc1",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 4,
+            "row": 3
+          },
+          "description": "",
+          "title": "Securities Count",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "71329abc-7614-4533-bf1b-9d9aa1e38b14"
+      },
+      {
+        "id": "4e2e4b8a-89ae-4362-9897-3f539f43bdd1",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 3
+          },
+          "description": "",
+          "title": "Historical Date Range",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "a944859e-39f2-4a3f-9114-19816006f85c"
+      },
+      {
+        "id": "95ac3402-072e-49af-9c1b-00becc4e8146",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": true,
+            "sizeX": 3,
+            "sizeY": 8,
+            "minSizeX": 2,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 6
+          },
+          "description": "",
+          "title": "Corporation Actions in Date Range",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "95925ba5-c4ab-4ded-b8b0-674e3d06f010"
+      },
+      {
+        "id": "968e87e6-94b1-4e06-ac09-ebb57bc15898",
+        "width": 1,
+        "options": {
+          "parameterMappings": {
+            "ticker": {
+              "name": "ticker",
+              "type": "dashboard-level",
+              "mapTo": "ticker",
+              "value": null,
+              "title": "ticker"
+            }
+          },
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 8,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 3,
+            "row": 6
+          },
+          "description": "",
+          "title": "VWAP",
+          "overrideColors": true
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "2e726bea-7f88-4040-a33c-ef351f7add28"
+      },
+      {
+        "id": "98d45e97-1f48-485f-98b6-d0c53d880f14",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 9,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 28
+          },
+          "description": "Average PI per security for trades in the last 6 months",
+          "title": "Price Improvement by Security",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "ee67d708-8dfa-43a8-8695-ef88f114e76b"
+      },
+      {
+        "id": "9b58fb80-2572-43ce-be7f-c14e6e0b29fa",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 12,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 3,
+            "row": 16
+          },
+          "description": "Per minute, average price impact to the market",
+          "title": "How Are We Impacting Liquidity with Trades ",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "69678baa-b0ca-4763-9b58-eb71b03facb7"
+      },
+      {
+        "id": "a9478444-383b-4b7c-b9ad-55c88014317a",
+        "width": 1,
+        "options": {
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 2,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 14
+          },
+          "parameterMappings": {}
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "## Price Improvement, Realized Spread, and Price Impact"
+      },
+      {
+        "id": "eba90425-2a38-49e3-aa34-b4171fad4be1",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 12,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 16
+          },
+          "description": "Per Market Participant (MPID), What Improvement or Loss Are We Getting on Average",
+          "title": "What Price Improvement Are We Getting",
+          "overrideColors": false
+        },
+        "dashboard_id": "f5429915-d529-445b-b945-fc86f86bb77b",
+        "text": "",
+        "visualization_id": "1823b64f-bfe8-4bfa-80fc-71645ca3fe29"
+      }
+    ],
+    "tags": [],
+    "color_palette": [
+      "#077A9D",
+      "#FFAB00",
+      "#00A972",
+      "#FF3621",
+      "#8BCAE7",
+      "#AB4057",
+      "#99DDB4",
+      "#FCA4A1",
+      "#919191",
+      "#BF7080"
+    ],
+    "dashboard_filters_enabled": false,
+    "parent": "folders/3282400661502419",
+    "is_archived": false
+  },
+  "version": "1.0"
+}

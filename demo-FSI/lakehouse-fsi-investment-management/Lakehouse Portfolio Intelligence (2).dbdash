@@ -1,0 +1,2900 @@
+{
+  "queries": [
+    {
+      "id": "716a1a29-84f7-4192-92c7-6cd4bd545ee0",
+      "name": "New query (1) (1)",
+      "description": null,
+      "query": "select sum(price*NUMBER_OF_SHARES) aum from dbdemos.fsi_capm_data.positions p join (select ticker, avg(price) price from dbdemos.fsi_capm_data.bronze_tick_trades group by ticker) t\non t.ticker = p.INSTRUMENT\nwhere date = (select max(date) from dbdemos.fsi_capm_data.positions)",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069073",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": null,
+        "catalog": null
+      },
+      "visualizations": [
+        {
+          "id": "8e3bd2e5-d36f-4efc-afea-6867039a92b3",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "f2e4c1d4-5352-4891-a6be-a9f9fa445e51",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "AUM",
+            "counterColName": "aum",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 2,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000",
+            "stringPrefix": "$"
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "0685643b-6c34-4b1e-a8b0-abee56c67cf2",
+      "name": "Classify Social Media (1)",
+      "description": null,
+      "query": "select CLASSIFY_TRANSCRIPT({{ transcript }})",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069079",
+        "visualization_control_order": [
+          "transcript"
+        ],
+        "parameters": [
+          {
+            "title": "transcript",
+            "name": "transcript",
+            "type": "text",
+            "value": "Nvda is a tradeable stock has some nice peaks and valleys, but that’s short term small money. That’s what your seeing and AI bots selling and rebuying. In 5 years I see this company near 2 trillion in market cap. Don’t let this short term price movement scare you, I’m buying the dips. This nvda is going to $5000 per share. GME is a bs stock but it did teach me while I traded it to hold and buy dips. I’m eating nvda dips all day."
+          }
+        ],
+        "schema": "fsi_capm_data",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "79827788-3241-4119-b195-a2580eb128d1",
+          "type": "DETAILS",
+          "name": "Details view 1",
+          "description": "",
+          "options": {
+            "columns": [
+              {
+                "name": "dbdemos.default.classify_transcript(Nvda is a tradeable stock has some nice peaks and valleys, but that’s short term small money. That’s what your seeing and AI bots selling and rebuying. In 5 years I see this company near 2 trillion in market cap. Don’t let this short term price movement scare you, I’m buying the dips. This nvda is going to $5000 per share. GME is a bs stock but it did teach me while I traded it to hold and buy dips. I’m eating nvda dips all day.)",
+                "type": "string",
+                "title": "POST - Nvda is a tradeable stock has some nice peaks and valleys, but that’s short term small money. That’s what your seeing and AI bots selling and rebuying. In 5 years I see this company near 2 trillion in market cap. Don’t let this short term price movement scare you, I’m buying the dips. This nvda is going to $5000 per share. GME is a bs stock but it did teach me while I traded it to hold and buy dips. I’m eating nvda dips all day."
+              }
+            ],
+            "version": 1
+          },
+          "query_plan": null
+        },
+        {
+          "id": "feed4e1f-af0d-410b-a463-05ae1fc6ec4f",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "cc0a4357-d035-48b8-a9a8-2d1f99dd31e2",
+      "name": "Overall query for Portfolio Metrics Dashboard (1)",
+      "description": null,
+      "query": "SELECT * \nFROM dbdemos.fsi_capm_data.backtest_results",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069081",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "gold",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "3acb469d-2108-485f-b38b-a040ad24409f",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "itemsPerPage": 25,
+            "condensed": true,
+            "withRowNumber": false,
+            "columns": [
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "TICKER",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 0,
+                "title": "TICKER",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "$0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "equity_final_dllrs",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 1,
+                "title": "equity_final_dllrs",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00%",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "return_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 2,
+                "title": "return_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00%",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "best_trade_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 3,
+                "title": "best_trade_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00%",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "worst_trade_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 4,
+                "title": "worst_trade_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00%",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "buy_and_hold_return_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 5,
+                "title": "buy_and_hold_return_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "return_annual_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": false,
+                "order": 6,
+                "title": "return_annual_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "sharpe_ratio",
+                "type": "float",
+                "displayAs": "number",
+                "visible": false,
+                "order": 7,
+                "title": "sharpe_ratio",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "calmar_ratio",
+                "type": "float",
+                "displayAs": "number",
+                "visible": false,
+                "order": 8,
+                "title": "calmar_ratio",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "num_trades",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 9,
+                "title": "num_trades",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "win_rate_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 10,
+                "title": "win_rate_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "start",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 11,
+                "title": "start",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "end",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 12,
+                "title": "end",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "duration",
+                "type": "float",
+                "displayAs": "number",
+                "visible": false,
+                "order": 13,
+                "title": "duration",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "avg_trade_duration",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 14,
+                "title": "avg_trade_duration",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "exposure_time_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 15,
+                "title": "exposure_time_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "equity_peak_dollrs",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 16,
+                "title": "equity_peak_dollrs",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "volatility_annual_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": false,
+                "order": 17,
+                "title": "volatility_annual_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "sortino_ratio",
+                "type": "float",
+                "displayAs": "number",
+                "visible": false,
+                "order": 18,
+                "title": "sortino_ratio",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "max_drawdown_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 19,
+                "title": "max_drawdown_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "avg_drawdown_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 20,
+                "title": "avg_drawdown_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "max_drawdown_duration",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 21,
+                "title": "max_drawdown_duration",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "avg_drawdown_duration",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 22,
+                "title": "avg_drawdown_duration",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "avg_trade_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 23,
+                "title": "avg_trade_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "max_trade_duration",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 24,
+                "title": "max_trade_duration",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "profit_factor",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 25,
+                "title": "profit_factor",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "expectancy_pctg",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 26,
+                "title": "expectancy_pctg",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0.00",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "SQN",
+                "type": "float",
+                "displayAs": "number",
+                "visible": true,
+                "order": 27,
+                "title": "SQN",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              },
+              {
+                "numberFormat": "0",
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "PORTFOLIO_ID",
+                "type": "integer",
+                "displayAs": "number",
+                "visible": false,
+                "order": 28,
+                "title": "PORTFOLIO_ID",
+                "allowSearch": false,
+                "alignContent": "right",
+                "allowHTML": false,
+                "highlightLinks": false,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              }
+            ],
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "4beeb53b-fab7-4530-a4f1-b79a0774365a",
+          "type": "CHART",
+          "name": "Bar 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "column",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "Daily Trades"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_6fef1ba416162": {
+                "yAxis": 0,
+                "type": "column"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": true,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "TICKER",
+                "id": "column_6fef1ba416159"
+              },
+              "y": [
+                {
+                  "id": "column_6fef1ba416162",
+                  "column": "num_trades",
+                  "transform": "SUM"
+                }
+              ],
+              "series": {
+                "column": "PORTFOLIO_ID",
+                "id": "column_6fef1ba416163"
+              }
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "function": "SUM",
+                "args": [
+                  {
+                    "column": "num_trades"
+                  }
+                ],
+                "alias": "column_6fef1ba416162"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ],
+            "groups": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ]
+          }
+        },
+        {
+          "id": "5535fc74-fb8b-4cee-b10d-b15922e322e3",
+          "type": "CHART",
+          "name": "Bar 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "column",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "Average Trade Duration (days)"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_6fef1ba43784": {
+                "yAxis": 0,
+                "type": "column"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": true,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "TICKER",
+                "id": "column_6fef1ba43782"
+              },
+              "y": [
+                {
+                  "id": "column_6fef1ba43784",
+                  "column": "avg_trade_duration",
+                  "transform": "SUM"
+                }
+              ],
+              "series": {
+                "column": "PORTFOLIO_ID",
+                "id": "column_6fef1ba43785"
+              }
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "function": "SUM",
+                "args": [
+                  {
+                    "column": "avg_trade_duration"
+                  }
+                ],
+                "alias": "column_6fef1ba43784"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ],
+            "groups": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ]
+          }
+        },
+        {
+          "id": "74dbf595-fad5-409f-88f8-9cc9e7521738",
+          "type": "CHART",
+          "name": "Pie 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "pie",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_6fef1ba45365": {
+                "yAxis": 0,
+                "type": "pie",
+                "name": "Total Return (%)"
+              },
+              "column_77310b8816367": {
+                "yAxis": 0,
+                "type": "pie",
+                "name": "Total Return ($)"
+              },
+              "column_77310b8816389": {
+                "yAxis": 0,
+                "type": "pie"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]0",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": true,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "TICKER",
+                "id": "column_77310b8816387"
+              },
+              "y": [
+                {
+                  "id": "column_77310b8816389",
+                  "column": "return_pctg",
+                  "transform": "AVG"
+                }
+              ]
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "function": "AVG",
+                "args": [
+                  {
+                    "column": "return_pctg"
+                  }
+                ],
+                "alias": "column_77310b8816389"
+              }
+            ],
+            "groups": [
+              {
+                "column": "TICKER"
+              }
+            ]
+          }
+        },
+        {
+          "id": "aa17faf4-34c6-4f54-bc22-5bf42f976bdc",
+          "type": "PIVOT_TABLE",
+          "name": "Pivot table 1",
+          "description": "",
+          "options": {
+            "rows": [],
+            "columns": [
+              {
+                "field": "equity_final_dllrs",
+                "sort": "ascending"
+              },
+              {
+                "field": "return_pctg",
+                "sort": "ascending"
+              }
+            ],
+            "cell": {
+              "field": "equity_final_dllrs",
+              "transform": {
+                "fn": "count"
+              }
+            },
+            "colorCellsByValue": false
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "equity_final_dllrs"
+              },
+              {
+                "column": "return_pctg"
+              },
+              {
+                "function": "COUNT",
+                "args": [
+                  {
+                    "column": "equity_final_dllrs"
+                  }
+                ],
+                "alias": "equity_final_dllrs_alias"
+              }
+            ],
+            "groups": [
+              {
+                "column": "equity_final_dllrs"
+              },
+              {
+                "column": "return_pctg"
+              }
+            ],
+            "order_by": [
+              {
+                "direction": "asc",
+                "expression": {
+                  "kind": "identifier",
+                  "identifier": "equity_final_dllrs"
+                }
+              },
+              {
+                "direction": "asc",
+                "expression": {
+                  "kind": "identifier",
+                  "identifier": "return_pctg"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "b382bbb0-5763-4ef0-866c-7093f823e76f",
+          "type": "CHART",
+          "name": "Bar 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "column",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "Return (%)"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_6fef1ba43142": {
+                "yAxis": 0,
+                "type": "column"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00%",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "DD/MM/YYYY HH:mm",
+            "showDataLabels": true,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "TICKER",
+                "id": "column_6fef1ba43137"
+              },
+              "y": [
+                {
+                  "id": "column_6fef1ba43142",
+                  "column": "return_pctg",
+                  "transform": "SUM"
+                }
+              ],
+              "series": {
+                "column": "PORTFOLIO_ID",
+                "id": "column_6fef1ba43155"
+              }
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "function": "SUM",
+                "args": [
+                  {
+                    "column": "return_pctg"
+                  }
+                ],
+                "alias": "column_6fef1ba43142"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ],
+            "groups": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ]
+          }
+        },
+        {
+          "id": "cc03a35b-6dd7-4103-9ba4-9b2e91e2f1d6",
+          "type": "CHART",
+          "name": "Pie 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "pie",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_6fef1ba416300": {
+                "yAxis": 0,
+                "type": "pie"
+              },
+              "column_6fef1ba416315": {
+                "yAxis": 0,
+                "type": "pie"
+              },
+              "equity_final_dllrs": {
+                "yAxis": 0,
+                "type": "pie"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": true,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "PORTFOLIO_ID",
+                "id": "column_6fef1ba416301"
+              },
+              "y": [
+                {
+                  "id": "column_6fef1ba416315",
+                  "column": "equity_final_dllrs",
+                  "transform": "SUM"
+                }
+              ],
+              "series": {
+                "column": "PORTFOLIO_ID",
+                "id": "column_6fef1ba416302"
+              }
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "PORTFOLIO_ID"
+              },
+              {
+                "function": "SUM",
+                "args": [
+                  {
+                    "column": "equity_final_dllrs"
+                  }
+                ],
+                "alias": "column_6fef1ba416315"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ],
+            "groups": [
+              {
+                "column": "PORTFOLIO_ID"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ]
+          }
+        },
+        {
+          "id": "cc042201-bb1b-4e11-a721-1bed32b61afb",
+          "type": "CHART",
+          "name": "Box 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "box",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "best_trade_pctg": {
+                "yAxis": 0,
+                "type": "box"
+              },
+              "worst_trade_pctg": {
+                "yAxis": 0,
+                "type": "box"
+              },
+              "avg_trade_pctg": {
+                "yAxis": 0,
+                "type": "box"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "TICKER",
+                "id": "column_6fef1ba43895"
+              },
+              "y": [
+                {
+                  "column": "best_trade_pctg",
+                  "id": "column_6fef1ba43899"
+                },
+                {
+                  "column": "worst_trade_pctg",
+                  "id": "column_6fef1ba43900"
+                },
+                {
+                  "column": "avg_trade_pctg",
+                  "id": "column_6fef1ba43901"
+                }
+              ],
+              "series": {
+                "column": "PORTFOLIO_ID",
+                "id": "column_6fef1ba43902"
+              }
+            }
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "TICKER"
+              },
+              {
+                "column": "best_trade_pctg"
+              },
+              {
+                "column": "worst_trade_pctg"
+              },
+              {
+                "column": "avg_trade_pctg"
+              },
+              {
+                "column": "PORTFOLIO_ID"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e2942fac-7ebb-4466-8bda-47bad25af6e2",
+      "name": "Clustered Peer Groups",
+      "description": null,
+      "query": "select * From (select ticker, a.marketcap, cast(case when {{ Technical_Metric }} = 'debt_to_equity' then debt_to_equity \n            when {{ Technical_Metric }} = 'current_ratio' then current_ratio\n            when {{ Technical_Metric }} = 'operating_margin' then operating_margin\n            when {{ Technical_Metric }} = 'book_value' then pb\n            when {{ Technical_Metric }} = 'price_to_earnings' then pe_forward\n            when {{ Technical_Metric }} = 'profit_margin' then profit_margin\n            when {{ Technical_Metric }} = 'price_to_sales' then ps_t12m\n            when {{ Technical_Metric }} = 'return_on_equity' then roe\n            end as double) value\n            from  (select * from dbdemos.fsi_capm_data.clustered_tickers) a \njoin \n(select cluster_id from dbdemos.fsi_capm_data.clustered_tickers where ticker = {{ Ticker }}) b    \non a.cluster_id = b.cluster_id \nwhere cast(case when {{ Technical_Metric }} = 'debt_to_equity' then debt_to_equity \n            when {{ Technical_Metric }} = 'current_ratio' then current_ratio\n            when {{ Technical_Metric }} = 'operating_margin' then operating_margin\n            when {{ Technical_Metric }} = 'book_value' then pb\n            when {{ Technical_Metric }} = 'price_to_earnings' then pe_forward\n            when {{ Technical_Metric }} = 'profit_margin' then profit_margin\n            when {{ Technical_Metric }} = 'price_to_sales' then ps_t12m\n            when {{ Technical_Metric }} = 'return_on_equity' then roe\n            end as double) < 1000\n\n            order by marketcap desc\n            limit 7) order by value desc",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069080",
+        "visualization_control_order": [
+          "Ticker",
+          "Technical_Metric"
+        ],
+        "parameters": [
+          {
+            "title": "Ticker",
+            "name": "Ticker",
+            "type": "text",
+            "value": "NVDA"
+          },
+          {
+            "title": "Technical_Metric",
+            "name": "Technical_Metric",
+            "type": "text",
+            "value": "price_to_earnings"
+          }
+        ],
+        "schema": null,
+        "catalog": null
+      },
+      "visualizations": [
+        {
+          "id": "55f88402-188c-453e-a4cd-848ec6080fcb",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "885d0de4-a871-4b04-80e3-ed67476d6c04",
+          "type": "CHART",
+          "name": "Bubble 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "bubble",
+            "sortX": false,
+            "sortY": false,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "rangeMin": 0,
+                "rangeMax": 10000000000
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": false,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "marketcap": {
+                "yAxis": 0,
+                "type": "bubble"
+              },
+              "column_b2f6bdd277882": {
+                "yAxis": 0,
+                "type": "bubble"
+              },
+              "column_b2f6bdd278138": {
+                "yAxis": 0,
+                "type": "bubble"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "ticker",
+                "id": "column_b2f6bdd278137"
+              },
+              "y": [
+                {
+                  "column": "marketcap",
+                  "id": "column_b2f6bdd281170"
+                }
+              ],
+              "size": {
+                "column": "value",
+                "id": "column_b2f6bdd281169"
+              }
+            }
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "ticker"
+              },
+              {
+                "column": "marketcap"
+              },
+              {
+                "column": "value"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ea669daf-d0bf-48b3-b174-2a402a8911e0",
+          "type": "CHART",
+          "name": "Area 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "area",
+            "sortX": false,
+            "sortY": false,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "P/E Forward"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_b2f6bdd297149": {
+                "yAxis": 0,
+                "type": "area"
+              },
+              "value": {
+                "yAxis": 0,
+                "type": "area"
+              },
+              "column_b2f6bdd292346": {
+                "yAxis": 0,
+                "type": "area"
+              },
+              "column_b2f6bdd291840": {
+                "yAxis": 0,
+                "type": "area"
+              },
+              "marketcap": {
+                "yAxis": 0,
+                "type": "area"
+              },
+              "column_8117ce678781": {
+                "yAxis": 0,
+                "type": "area"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
+            "showDataLabels": false,
+            "numBins": 10,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "ticker",
+                "id": "column_8117ce678779"
+              },
+              "y": [
+                {
+                  "id": "column_8117ce678781",
+                  "column": "value",
+                  "transform": "AVG"
+                }
+              ]
+            },
+            "condensed": true,
+            "withRowNumber": true,
+            "reverseY": false,
+            "isAggregationOn": true,
+            "reverseX": false
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "ticker"
+              },
+              {
+                "function": "AVG",
+                "args": [
+                  {
+                    "column": "value"
+                  }
+                ],
+                "alias": "column_8117ce678781"
+              }
+            ],
+            "groups": [
+              {
+                "column": "ticker"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "2ccec886-ef75-44a9-93f7-1a123ba0bdb0",
+      "name": "Backtests",
+      "description": null,
+      "query": "select * from fsi_capm_data.ticker_backtests where ticker = {{ security }} and index >=1 and index <= 64 order by index",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069075",
+        "visualization_control_order": [
+          "security"
+        ],
+        "parameters": [
+          {
+            "title": "security",
+            "name": "security",
+            "type": "text",
+            "value": "NVDA"
+          }
+        ],
+        "schema": "bronze",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "327b47ab-d73b-433d-b150-2898d64d74ba",
+          "type": "CHART",
+          "name": "Line 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "line",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "Equity with $10K Starting Capital"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_c1a4e56910026": {
+                "yAxis": 0,
+                "type": "line"
+              },
+              "HOLD": {
+                "color": "#799CFF"
+              },
+              "SMA": {
+                "color": "#17BF51"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "index",
+                "id": "column_c1a4e56910024"
+              },
+              "y": [
+                {
+                  "id": "column_c1a4e56910026",
+                  "column": "Equity",
+                  "transform": "SUM"
+                }
+              ],
+              "series": {
+                "column": "strategy",
+                "id": "column_c1a4e56910027"
+              }
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "index"
+              },
+              {
+                "function": "SUM",
+                "args": [
+                  {
+                    "column": "Equity"
+                  }
+                ],
+                "alias": "column_c1a4e56910026"
+              },
+              {
+                "column": "strategy"
+              }
+            ],
+            "groups": [
+              {
+                "column": "index"
+              },
+              {
+                "column": "strategy"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a7473afc-efcb-4107-8c5e-a457ebb6d0ec",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "73d79c0a-748c-40cd-a56e-e68035de1288",
+      "name": "Spreadd Volatility",
+      "description": null,
+      "query": "select * from dbdemos.fsi_capm_data.quote_based_volatility where spread_volatility > 3\nand hour(minute) between 10 and 13\nand date = '2019-08-01'\norder by spread_volatility desc \nlimit 30",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069078",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "gold",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "8c19b168-97b3-4e29-9bc7-c6969011b080",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "9f9f14a0-541a-4459-9a63-4b0942edf971",
+          "type": "CHART",
+          "name": "Heatmap 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "heatmap",
+            "sortX": false,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-",
+                "title": {
+                  "text": "Spread Volatility"
+                }
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_bef1f71811109": {
+                "yAxis": 0,
+                "type": "heatmap"
+              },
+              "column_bef1f71817838": {
+                "yAxis": 0,
+                "type": "heatmap"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm:ss",
+            "showDataLabels": false,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "minute",
+                "id": "column_bef1f71817609"
+              },
+              "y": [
+                {
+                  "column": "ticker",
+                  "id": "column_bef1f71817838"
+                }
+              ],
+              "zVal": {
+                "id": "column_bef1f71817837",
+                "column": "spread_volatility",
+                "transform": "MEDIAN"
+              }
+            },
+            "isAggregationOn": true,
+            "condensed": true,
+            "withRowNumber": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "minute"
+              },
+              {
+                "column": "ticker"
+              },
+              {
+                "function": "PERCENTILE",
+                "args": [
+                  {
+                    "column": "spread_volatility"
+                  },
+                  {
+                    "number": 0.5
+                  }
+                ],
+                "alias": "column_bef1f71817837"
+              }
+            ],
+            "groups": [
+              {
+                "column": "minute"
+              },
+              {
+                "column": "ticker"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "f71f2bf5-713a-4930-9c4e-97926ba9be13",
+      "name": "10Q Highlight Lowlight (1)",
+      "description": null,
+      "query": "select replace(first_pass_review, \"Lowlights\", concat(CHAR(10), CHAR(13), \"Lowlights\")) first_pass_review\nfrom (select highlight_lowlight(\n    \"Create highlights and lowlights from this earnings guidance: Data Center revenue for the first quarter of fiscal year 2024 was $4.28 billion, up 14% from a year ago, led by growing demand for generative AI and large language models using GPUs based on our NVIDIA Hopper and Ampere architectures. The year-on-year increase reflects strong demand from large consumer internet customers and cloud service providers. We launched four AI inference platforms that combine our full-stack inference software with NVIDIA Ada, NVIDIA Hopper and NVIDIA Grace Hopper processors optimized for generative AI, large language model and other AI workloads. We announced that Google Cloud is the first cloud provider to offer the new NVIDIA L4 Tensor Core GPU to accelerate generative AI application. We introduced NVIDIA AI Foundations to help businesses create and operate custom large language models and generative AI models. We also partnered with ServiceNow, Inc. to build generative AI across enterprise IT; joined with Dell Technologies in Project Helix to deliver full-stack generative AI solutions to enterprises; announced a collaboration with Medtronic on an AI platform for medical devices; and unveiled the NVIDIA cuLitho software library for computational lithography.\nGaming revenue for the first quarter of fiscal year 2024 was $2.24 billion, down 38% from a year ago. The year-on-year decrease reflects weaker demand due to the macroeconomic slowdown and lower shipments to normalize channel inventory levels. We launched the GeForce RTX 4070 GPU based on the NVIDIA Ada Lovelace architecture.\nProfessional Visualization revenue for the first quarter of fiscal year 2024 was $295 million, down 53% from a year ago, on lower sell-in to partners to help reduce channel inventory levels. We announced six new GPUs based on the NVIDIA RTX Ada Lovelace architecture. We announced NVIDIA Omniverse Cloud, a fully managed service running in Microsoft Azure, for the development and deployment of industrial metaverse applications, and expanded our collaboration with Microsoft to connect Microsoft 365 applications with NVIDIA Omniverse.\nAutomotive revenue for the first quarter of fiscal year 2024 was $296 million, up 114% from a year ago on growth in sales of self-driving platforms and AI cockpit solutions. We announced that electric vehicle maker BYD Auto Co. Ltd. will extend its use of the NVIDIA DRIVE Orin centralized compute platform across more of its fleet.\") as first_pass_review\n) foo",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069076",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "fsi_capm_data",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "17b44c90-4cbf-4216-bdbb-17d1bc9a38b5",
+          "type": "DETAILS",
+          "name": "Details view 1",
+          "description": "",
+          "options": {
+            "columns": [
+              {
+                "name": "first_pass_review",
+                "type": "string",
+                "title": "first_pass_review"
+              }
+            ],
+            "version": 1
+          },
+          "query_plan": null
+        },
+        {
+          "id": "6f36b8be-88fb-4dce-9b71-3b59000bbe7d",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "itemsPerPage": 25,
+            "condensed": true,
+            "withRowNumber": false,
+            "columns": [
+              {
+                "booleanValues": [
+                  "false",
+                  "true"
+                ],
+                "imageUrlTemplate": "{{ @ }}",
+                "imageTitleTemplate": "{{ @ }}",
+                "imageWidth": "",
+                "imageHeight": "",
+                "linkUrlTemplate": "{{ @ }}",
+                "linkTextTemplate": "{{ @ }}",
+                "linkTitleTemplate": "{{ @ }}",
+                "linkOpenInNewTab": true,
+                "name": "first_pass_review",
+                "type": "string",
+                "displayAs": "string",
+                "visible": true,
+                "order": 100000,
+                "title": "first_pass_review",
+                "allowSearch": false,
+                "alignContent": "left",
+                "allowHTML": true,
+                "highlightLinks": true,
+                "useMonospaceFont": false,
+                "preserveWhitespace": false
+              }
+            ],
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "eb717abf-84fa-4581-9ae9-ce7e64d2e728",
+      "name": "AUM % Change (1)",
+      "description": null,
+      "query": "\nselect (100*(aum - prior_aum) / prior_aum) pct_change \nfrom (select sum(price*NUMBER_OF_SHARES) aum from dbdemos.fsi_capm_data.positions p join (select ticker, avg(price) price from dbdemos.fsi_capm_data.bronze_tick_trades group by ticker) t\non t.ticker = p.INSTRUMENT\nwhere date = (select max(date) from dbdemos.fsi_capm_data.positions)) a\ncross join (\nselect date, sum(price*NUMBER_OF_SHARES) prior_aum from dbdemos.fsi_capm_data.positions p join (select ticker, avg(price) price from dbdemos.fsi_capm_data.bronze_tick_trades group by ticker) t\non t.ticker = p.INSTRUMENT\nwhere date < (select max(date) from dbdemos.fsi_capm_data.positions)\ngroup by date\norder by date desc limit 1) b",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069077",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "creditdecisioning_fielddemo",
+        "catalog": "hive_metastore"
+      },
+      "visualizations": [
+        {
+          "id": "01883949-96d0-41eb-9f39-39a4b5cf8e94",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "% Change Y/Y",
+            "counterColName": "pct_change",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 2,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000",
+            "stringSuffix": "%"
+          },
+          "query_plan": null
+        },
+        {
+          "id": "e1792478-6b35-4bea-86b0-f26762336c8f",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "fc46a6a5-c0d6-4244-98ae-d325640afba4",
+      "name": "MTD Performance (1)",
+      "description": null,
+      "query": "select date, sum(price*NUMBER_OF_SHARES) prior_aum from dbdemos.fsi_capm_data.positions p join (select ticker, avg(price) price from dbdemos.fsi_capm_data.bronze_tick_trades group by ticker) t\non t.ticker = p.INSTRUMENT\nwhere date < (select max(date) from dbdemos.fsi_capm_data.positions)\ngroup by date\norder by date desc limit 1",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069072",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "creditdecisioning_fielddemo",
+        "catalog": "hive_metastore"
+      },
+      "visualizations": [
+        {
+          "id": "36b65fa4-c3b1-4a2f-8b75-14f57d742d92",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "Last Year AUM",
+            "counterColName": "prior_aum",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 2,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000",
+            "stringPrefix": "$"
+          },
+          "query_plan": null
+        },
+        {
+          "id": "ba860f09-ac1b-468f-a58f-3452f43bf9f4",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "a0b3e7da-859d-4e24-8900-c2a26c4af514",
+      "name": "Portfolio Diversity - query for portfolio metrics (1)",
+      "description": null,
+      "query": "SELECT a.PORTFOLIO_ID,\n       b.GICSSector\nFROM dbdemos.fsi_capm_data.positions a \nLEFT JOIN dbdemos.fsi_capm_data.sectors b\nON a.INSTRUMENT = b.Symbol",
+      "options": {
+        "parent": "folders/3282400661502419",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/3573021532069074",
+        "visualization_control_order": [],
+        "parameters": [],
+        "schema": "gold",
+        "catalog": "dbdemos"
+      },
+      "visualizations": [
+        {
+          "id": "072c46d4-8da4-477b-bbf7-edbdbd54f95b",
+          "type": "CHART",
+          "name": "Pie 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "pie",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {
+              "column_5502885f94": {
+                "yAxis": 0,
+                "type": "pie",
+                "name": "Sector"
+              }
+            },
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": true,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "GICSSector",
+                "id": "column_5502885f4827"
+              },
+              "y": [
+                {
+                  "id": "column_5502885f94",
+                  "column": "GICSSector",
+                  "transform": "COUNT"
+                }
+              ]
+            },
+            "isAggregationOn": true
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "column": "GICSSector"
+              },
+              {
+                "function": "COUNT",
+                "args": [
+                  {
+                    "column": "GICSSector"
+                  }
+                ],
+                "alias": "column_5502885f94"
+              }
+            ],
+            "groups": [
+              {
+                "column": "GICSSector"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3c081fa5-443d-43a0-b5f6-a08ba4662c87",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    }
+  ],
+  "dashboard": {
+    "id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+    "name": "Lakehouse Portfolio Intelligence_RMv2",
+    "widgets": [
+      {
+        "id": "079a1b6d-e8b2-45d2-a1af-f8936f6957ae",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 2
+          },
+          "description": "",
+          "title": "Prior Year AUM",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "36b65fa4-c3b1-4a2f-8b75-14f57d742d92"
+      },
+      {
+        "id": "46ebb8cd-710b-41f2-ad22-8142cfb1831c",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 13,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 3,
+            "row": 5
+          },
+          "description": "",
+          "title": "Spread Volatility",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "9f9f14a0-541a-4459-9a63-4b0942edf971"
+      },
+      {
+        "id": "49faac13-12e0-42e2-a836-1e88eda0aa29",
+        "width": 1,
+        "options": {
+          "parameterMappings": {
+            "security": {
+              "name": "security",
+              "type": "dashboard-level",
+              "mapTo": "security",
+              "value": null,
+              "title": "security"
+            }
+          },
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 9,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 41
+          },
+          "description": "",
+          "title": "Simple Moving Average and Baseline Strategies",
+          "overrideColors": true
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "327b47ab-d73b-433d-b150-2898d64d74ba"
+      },
+      {
+        "id": "6d949152-0a70-44d3-b3ad-5c35f9233c77",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 2,
+            "row": 2
+          },
+          "description": "",
+          "title": "AUM",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "f2e4c1d4-5352-4891-a6be-a9f9fa445e51"
+      },
+      {
+        "id": "8bd4e7d2-e5a4-488e-9ead-b4e673c9db11",
+        "width": 1,
+        "options": {
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 2,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 18
+          }
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "# Screening and Optimization"
+      },
+      {
+        "id": "98c996d1-7bf7-4cfc-8e67-d9ced6152ac3",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "title": "Portfolio Diversity",
+          "description": "",
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 13,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 5
+          },
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "072c46d4-8da4-477b-bbf7-edbdbd54f95b"
+      },
+      {
+        "id": "a1453a9f-ebe0-47ad-b041-b75c4e978e45",
+        "width": 1,
+        "options": {
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 2,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 0
+          },
+          "parameterMappings": {}
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "# Unified Inventory Summary"
+      },
+      {
+        "id": "a7f30e2a-eeb3-4475-9ca1-ab04102febfb",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 6,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 33
+          },
+          "description": "",
+          "title": "LLM for Earnings Summary",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "17b44c90-4cbf-4216-bdbb-17d1bc9a38b5"
+      },
+      {
+        "id": "b0bf0e55-74c0-4efc-88c7-012110e6797e",
+        "width": 1,
+        "options": {
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 2,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 31
+          },
+          "parameterMappings": {}
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "###  Generative AI Built-in SQL Functions"
+      },
+      {
+        "id": "b4575608-f5c0-4442-82bf-149248fee544",
+        "width": 1,
+        "options": {
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 2,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 39
+          },
+          "parameterMappings": {}
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "###  Backtest All Securities in Parallel - Select Instrument of Interest"
+      },
+      {
+        "id": "c8d5b5ae-4525-43bc-88f6-264f8a3669b5",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "title": "Overall Portfolio Metrics",
+          "description": "",
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 8,
+            "minSizeX": 2,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 50
+          },
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "3acb469d-2108-485f-b38b-a040ad24409f"
+      },
+      {
+        "id": "c9ca8d81-22bf-458f-a134-97782f15c7f2",
+        "width": 1,
+        "options": {
+          "parameterMappings": {
+            "transcript": {
+              "name": "transcript",
+              "type": "dashboard-level",
+              "mapTo": "transcript",
+              "value": null,
+              "title": "transcript"
+            }
+          },
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 3,
+            "sizeY": 6,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 3,
+            "row": 33
+          },
+          "description": "",
+          "title": "Classify Social Media Sentiment",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "79827788-3241-4119-b195-a2580eb128d1"
+      },
+      {
+        "id": "d9235412-8837-43c7-94bd-b8d28428aff5",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 3,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 4,
+            "row": 2
+          },
+          "description": "",
+          "title": "% Change AUM",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "01883949-96d0-41eb-9f39-39a4b5cf8e94"
+      },
+      {
+        "id": "fa5deff1-713f-448e-b984-17a02550c94a",
+        "width": 1,
+        "options": {
+          "parameterMappings": {
+            "Ticker": {
+              "name": "Ticker",
+              "type": "widget-level",
+              "mapTo": "Ticker",
+              "value": null,
+              "title": "Ticker"
+            },
+            "Technical_Metric": {
+              "name": "Technical_Metric",
+              "type": "widget-level",
+              "mapTo": "Technical_Metric",
+              "value": null,
+              "title": "Technical_Metric"
+            }
+          },
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 11,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 20
+          },
+          "description": "",
+          "title": "Dynamic Clustered Peer Groups by Fundamentals",
+          "overrideColors": false
+        },
+        "dashboard_id": "c423c0de-29af-438a-a565-d2df1bca9bd4",
+        "text": "",
+        "visualization_id": "ea669daf-d0bf-48b3-b174-2a402a8911e0"
+      }
+    ],
+    "tags": [],
+    "color_palette": [
+      "#FFAB00",
+      "#077A9D",
+      "#00A972",
+      "#FF3621",
+      "#8BCAE7",
+      "#99DDB4"
+    ],
+    "dashboard_filters_enabled": false,
+    "parent": "folders/3282400661502419",
+    "is_archived": false
+  },
+  "version": "1.0"
+}
